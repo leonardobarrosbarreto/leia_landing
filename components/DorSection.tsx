@@ -1,5 +1,14 @@
 import Reveal from './Reveal'
 
+const etapas = [
+  'entrar no portal',
+  'digitar os dados',
+  'revisar',
+  'emitir a nota',
+  'salvar o PDF',
+  'enviar ao paciente',
+]
+
 export default function DorSection() {
   return (
     <section className="relative overflow-hidden px-6 py-24">
@@ -12,24 +21,37 @@ export default function DorSection() {
         </Reveal>
 
         <Reveal delay={80}>
-          <div className="mb-2 text-7xl font-black leading-none gradient-text md:text-9xl">
-            12 min
+          <div className="mb-3 text-7xl font-black leading-none gradient-text md:text-9xl">
+            12 minutos
           </div>
         </Reveal>
 
-        <Reveal delay={160}>
-          <p className="mb-8 text-xl font-medium leading-relaxed text-brand-text md:text-2xl">
-            É quanto tempo um psicólogo perde para emitir uma NFS-e.
-            <br className="hidden sm:block" />
-            <span className="text-brand-muted"> Por nota. Todo mês. Para cada paciente.</span>
+        {/* Linha discreta: por que dá 12 minutos */}
+        <Reveal delay={140}>
+          <p className="mx-auto mb-7 flex max-w-xl flex-wrap items-center justify-center gap-x-2 gap-y-1 text-xs text-brand-muted/60">
+            {etapas.map((etapa, i) => (
+              <span key={etapa} className="inline-flex items-center gap-2">
+                {etapa}
+                {i < etapas.length - 1 && <span className="text-brand-cyan/40">·</span>}
+              </span>
+            ))}
           </p>
         </Reveal>
 
-        <Reveal delay={240}>
+        <Reveal delay={200}>
+          <p className="mb-8 text-xl font-medium leading-relaxed text-brand-text md:text-2xl">
+            É o que você perde com <span className="text-white">uma única</span> NFS-e no portal.
+            Multiplique por cada paciente, todo mês.
+            <br className="hidden sm:block" />
+            <span className="text-brand-muted"> Quanto isso já te custou?</span>
+          </p>
+        </Reveal>
+
+        <Reveal delay={280}>
           <div className="inline-flex items-center gap-3 rounded-full border border-brand-cyan/30 bg-brand-cyan/10 px-6 py-3">
             <span className="text-lg">⚡</span>
             <span className="text-lg font-semibold text-white">
-              A LéIA faz isso em <span className="gradient-text font-black">segundos</span>.
+              A LéIA faz em <span className="gradient-text font-black">segundos</span> — sem você abrir portal nenhum.
             </span>
           </div>
         </Reveal>
