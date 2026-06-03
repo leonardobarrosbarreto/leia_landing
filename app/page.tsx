@@ -1,3 +1,4 @@
+import Header from '@/components/Header'
 import Hero from '@/components/Hero'
 import DorSection from '@/components/DorSection'
 import ComoFunciona from '@/components/ComoFunciona'
@@ -6,12 +7,15 @@ import Footer from '@/components/Footer'
 
 export default function Home() {
   return (
-    <main>
-      <Hero />
-      <DorSection />
-      <ComoFunciona />
-      <LeadForm />
-      <Footer />
-    </main>
+    <>
+      <Header />
+      <main>
+        <Hero />
+        <DorSection />
+        <ComoFunciona />
+        <LeadForm />
+        <Footer />
+      </main>
+    </>
   )
 }

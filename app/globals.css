@@ -3,24 +3,113 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background-color: #1C1F2E;
-  color: #FFFFFF;
-  font-family: 'Inter', sans-serif;
+:root {
+  --brand-cyan: #00D4FF;
+  --brand-teal: #00A896;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #14161F;
+  color: #FFFFFF;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Texto e botões com gradiente da marca ---------- */
 .gradient-text {
-  background: linear-gradient(90deg, #00D4FF, #00A896);
+  background: linear-gradient(100deg, #00D4FF, #00A896);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .btn-gradient {
-  background: linear-gradient(90deg, #00D4FF, #00A896);
-  transition: opacity 0.2s ease;
+  position: relative;
+  background: linear-gradient(100deg, #00D4FF, #00A896);
+  box-shadow: 0 8px 30px -8px rgba(0, 212, 255, 0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+.btn-gradient:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px -8px rgba(0, 212, 255, 0.65);
+}
+.btn-gradient:active {
+  transform: translateY(0);
 }
 
-.btn-gradient:hover {
-  opacity: 0.9;
+/* ---------- Borda com gradiente (cards premium) ---------- */
+.gradient-border {
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.5), rgba(0, 168, 150, 0.1) 60%, transparent);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.gradient-border:hover::before {
+  opacity: 1;
+}
+
+/* ---------- Glows de ambiente ---------- */
+.glow-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ---------- Grid sutil de fundo ---------- */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 50% at 50% 0%, #000 40%, transparent 100%);
+  mask-image: radial-gradient(ellipse 80% 50% at 50% 0%, #000 40%, transparent 100%);
+}
+
+/* ---------- Animações ---------- */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+.animate-float { animation: float 6s ease-in-out infinite; }
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.6; }
+}
+.animate-pulse-glow { animation: pulse-glow 7s ease-in-out infinite; }
+
+/* Scroll reveal: estado inicial + revelado (controlado por JS via .is-visible) */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .animate-float, .animate-pulse-glow { animation: none; }
+  html { scroll-behavior: auto; }
 }
