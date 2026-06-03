@@ -24,7 +24,7 @@ export default function Hero() {
 
           <Reveal delay={80}>
             <h1 className="mt-6 text-4xl font-black leading-[1.05] tracking-tight md:text-6xl">
-              Você formou em Psicologia.{' '}
+              Você se formou em Psicologia.{' '}
               <span className="gradient-text">Não em burocracia.</span>
             </h1>
           </Reveal>
