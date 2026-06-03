@@ -28,7 +28,7 @@ export default function DorSection() {
 
         {/* Linha discreta: por que dá 12 minutos */}
         <Reveal delay={140}>
-          <p className="mx-auto mb-7 flex max-w-xl flex-wrap items-center justify-center gap-x-2 gap-y-1 text-xs text-brand-muted/60">
+          <p className="mx-auto mb-7 flex max-w-xl flex-wrap items-center justify-center gap-x-2 gap-y-1 text-base text-brand-muted/60">
             {etapas.map((etapa, i) => (
               <span key={etapa} className="inline-flex items-center gap-2">
                 {etapa}
