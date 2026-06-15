@@ -18,7 +18,7 @@ export default function Hero() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-cyan opacity-75" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-cyan" />
               </span>
-              Lista de espera aberta · Vagas limitadas
+              Promoção de lançamento · Vagas limitadas
             </span>
           </Reveal>
 
@@ -31,8 +31,9 @@ export default function Hero() {
 
           <Reveal delay={160}>
             <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-brand-muted lg:mx-0 md:text-xl">
-              A LéIA emite suas notas fiscais automaticamente — por mensagem de
-              texto ou de voz. Sem portal, sem formulário, sem complicação.
+              Você manda uma mensagem de texto ou um áudio — e a nota é emitida,
+              salva e enviada ao seu paciente em segundos. Sem abrir sistema, sem
+              senha, sem aprender nada novo.
             </p>
           </Reveal>
 
@@ -42,13 +43,13 @@ export default function Hero() {
                 href="#formulario"
                 className="btn-gradient w-full rounded-xl px-8 py-4 text-lg font-bold text-white sm:w-auto"
               >
-                Quero ser um dos primeiros
+                Aproveite a promoção de lançamento
               </a>
               <a
                 href="#como-funciona"
                 className="w-full rounded-xl border border-white/15 px-8 py-4 text-center text-lg font-semibold text-white transition hover:bg-white/5 sm:w-auto"
               >
-                Ver como funciona
+                Quer mais informações?
               </a>
             </div>
           </Reveal>
@@ -65,7 +66,7 @@ export default function Hero() {
                 ))}
               </div>
               <p className="text-sm text-brand-muted">
-                <span className="font-semibold text-white">Psicólogos</span> já estão entrando na lista
+                <span className="font-semibold text-white">Psicólogos</span> já estão garantindo a vaga de lançamento
               </p>
             </div>
           </Reveal>

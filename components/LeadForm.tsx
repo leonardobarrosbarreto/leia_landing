@@ -58,19 +58,21 @@ export default function LeadForm() {
             <div className="text-5xl mb-4">🎉</div>
             <h3 className="text-2xl font-bold mb-2">Vaga garantida!</h3>
             <p className="text-brand-muted">
-              Você está na lista. Vamos te avisar quando a LéIA estiver pronta para você.
+              Você está na promoção de lançamento. Em breve a gente te chama para
+              deixar as suas notas por conta da LéIA.
             </p>
           </div>
         ) : (
           <>
             <p className="text-brand-muted uppercase tracking-widest text-sm font-semibold text-center mb-4">
-              Lista de espera
+              Promoção de lançamento
             </p>
             <h2 className="text-3xl font-black text-center mb-2">
-              Quero ser um dos <span className="gradient-text">primeiros</span>
+              Deixe as suas notas por conta da <span className="gradient-text">LéIA</span>
             </h2>
             <p className="text-brand-muted text-center mb-8">
-              Garanta sua vaga antes do lançamento. Sem custo, sem compromisso.
+              Garanta sua vaga na promoção de lançamento e use seu tempo com o que
+              importa: seus pacientes, sua família, você.
             </p>
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               <input
@@ -108,7 +110,7 @@ export default function LeadForm() {
                 disabled={status === 'loading'}
                 className="btn-gradient text-white font-bold text-lg py-4 rounded-xl mt-2 disabled:opacity-60"
               >
-                {status === 'loading' ? 'Enviando...' : 'Garantir minha vaga'}
+                {status === 'loading' ? 'Enviando...' : 'Aproveitar a promoção de lançamento'}
               </button>
             </form>
 

@@ -5,19 +5,19 @@ const passos = [
     numero: '01',
     icone: '💬',
     titulo: 'Você manda uma mensagem',
-    descricao: 'Texto ou voz: "Emite nota para a Maria, R$ 250". É só isso.',
+    descricao: 'Texto ou áudio: "Emite uma nota para a Maria, R$ 250." É só isso.',
   },
   {
     numero: '02',
     icone: '✅',
-    titulo: 'LéIA confirma com você',
-    descricao: 'Ela mostra os dados e pede sua aprovação antes de emitir.',
+    titulo: 'A LéIA confirma com você',
+    descricao: 'Ela mostra os dados e espera o seu ok antes de emitir.',
   },
   {
     numero: '03',
     icone: '📄',
-    titulo: 'Nota emitida automaticamente',
-    descricao: 'PDF gerado, salvo e enviado para o paciente. Sem você abrir portal nenhum.',
+    titulo: 'Emitida, salva e enviada',
+    descricao: 'Em segundos a nota é emitida, guardada e enviada ao seu paciente. Sem portal, sem senha.',
   },
 ]
 

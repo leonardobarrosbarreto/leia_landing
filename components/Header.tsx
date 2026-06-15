@@ -17,7 +17,7 @@ export default function Header() {
             href="#formulario"
             className="btn-gradient hidden rounded-xl px-5 py-2 text-sm font-bold text-white sm:inline-block"
           >
-            Entrar na lista
+            Aproveite o lançamento
           </a>
         </div>
       </div>

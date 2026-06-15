@@ -12,7 +12,7 @@ export default function Footer() {
           className="h-7 w-auto opacity-80"
         />
         <p className="max-w-md text-sm text-brand-muted">
-          A secretária de IA que cuida da burocracia para o psicólogo focar no que importa: o paciente.
+          A LéIA emite, salva e envia as suas notas fiscais — para você usar seu tempo com o que importa: seus pacientes.
         </p>
         <p className="text-xs text-brand-muted/70">
           Um produto <span className="font-semibold text-brand-muted">Agentrika</span> · © 2026 · Todos os direitos reservados.

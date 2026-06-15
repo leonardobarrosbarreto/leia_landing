@@ -1,11 +1,11 @@
 import Reveal from './Reveal'
 
 const etapas = [
-  'entrar no portal',
-  'digitar os dados',
-  'revisar',
+  'abrir o portal',
+  'preencher campo por campo',
+  'descrever pro reembolso',
   'emitir a nota',
-  'salvar o PDF',
+  'salvar na pasta',
   'enviar ao paciente',
 ]
 
@@ -41,7 +41,8 @@ export default function DorSection() {
         <Reveal delay={200}>
           <p className="mb-8 text-xl font-medium leading-relaxed text-brand-text md:text-2xl">
             É o que você perde com <span className="text-white">uma única</span> NFS-e no portal.
-            Multiplique por cada paciente, todo mês.
+            Multiplique por cada paciente, todo mês — e lá se vai uma tarde inteira
+            no que não é o seu trabalho.
             <br className="hidden sm:block" />
             <span className="text-brand-muted"> Quanto isso já te custou?</span>
           </p>
