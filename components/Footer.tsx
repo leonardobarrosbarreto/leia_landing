@@ -15,7 +15,10 @@ export default function Footer() {
           A LéIA emite, salva e envia as suas notas fiscais — para você usar seu tempo com o que importa: seus pacientes.
         </p>
         <p className="text-xs text-brand-muted/70">
-          Um produto <span className="font-semibold text-brand-muted">Agentrika</span> · © 2026 · Todos os direitos reservados.
+          Um produto <span className="font-semibold text-brand-muted">Agentrika</span> · © 2026 · Todos os direitos reservados. ·{' '}
+          <a href="/privacy-policy" className="underline hover:text-brand-muted">
+            Política de Privacidade
+          </a>
         </p>
       </div>
     </footer>
