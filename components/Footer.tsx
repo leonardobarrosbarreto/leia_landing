@@ -20,6 +20,9 @@ export default function Footer() {
             Política de Privacidade
           </a>
         </p>
+        <p className="text-xs text-brand-muted/70">
+          Agentrika é marca de Barreto e Schaefer Treinamentos LTDA · CNPJ 27.419.182/0001-96 · Porto Alegre/RS
+        </p>
       </div>
     </footer>
   )
