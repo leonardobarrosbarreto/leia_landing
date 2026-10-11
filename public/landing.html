@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LéIA | Nota fiscal pelo WhatsApp</title>
+<meta name="description" content="Mande uma mensagem no WhatsApp e a LéIA emite a NFS-e no Emissor Nacional, guarda a nota e envia ao seu paciente por e-mail. Teste grátis por 30 dias.">
+<meta property="og:title" content="LéIA | Nota fiscal pelo WhatsApp">
+<meta property="og:description" content="Mande uma mensagem. A LéIA emite a nota. Teste grátis por 30 dias.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://agentrika.com.br/">
+<meta property="og:site_name" content="LéIA · Agentrika">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:image" content="https://agentrika.com.br/og-leia.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Mande uma mensagem. A LéIA emite a nota.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://agentrika.com.br/og-leia.jpg">
+<link rel="canonical" href="https://agentrika.com.br/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234A1FC8'/%3E%3Cstop offset='1' stop-color='%231592E6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-size='30' font-weight='800' fill='white' text-anchor='middle'%3ELé%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
+<style>
+/* Layout: rolagem única, coluna de 1180px; topo em degradê azul-roxo (aprovado), demais seções em grafite neutro (DESIGN.md); "Quem criou" em off-white.
+   Página escura de propósito (identidade da marca): não troca de tema. */
+:root{
+  --bg:#0E1018; --bg-2:#1C1F2E; --surface:#1F2733; --surface-2:#2A3340;
+  --line:#232A36; --line-2:#2A3340;
+  --fg:#FFFFFF; --muted:#A0ADB8; --soft:#909CA8; --accent:#00D4FF; --neutral-ic:#C9D1DA;
+  --btn:linear-gradient(100deg,#2BBDF2 0%,#4A86F7 55%,#5E6FF2 100%);
+  --hero:linear-gradient(118deg,#4A1FC8 0%,#3843E3 52%,#1592E6 100%);
+  --wa-bg:#0B141A; --wa-in:#202C33; --wa-out:#005C4B; --wa-ink:#E9EDEF; --wa-mute:#8696A0; --wa-ok:#5BE7C4;
+  --fs-12:12px; --fs-14:14px; --fs-16:16px; --fs-18:18px; --fs-22:22px; --fs-28:28px; --fs-40:40px; --fs-56:56px;
+  --r-8:8px; --r-16:16px; --r-24:24px; --r-pill:999px;
+  --sh-1:0 1px 2px rgba(0,0,0,.3),0 10px 28px -14px rgba(0,0,0,.5);
+  --sh-2:0 34px 80px -32px rgba(0,0,0,.7);
+  --glow:0 16px 40px -18px rgba(74,134,247,.65);
+  --font:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font);font-size:var(--fs-16);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,p{margin:0}
+h1,h2,h3{text-wrap:balance;letter-spacing:-.02em}
+a{color:inherit}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+.kicker{display:block;font-size:var(--fs-12);font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.h2{font-size:var(--fs-40);font-weight:800;line-height:1.12;margin-top:12px}
+.h2 .hl{color:var(--accent)}
+.lead{font-size:var(--fs-18);color:var(--muted);margin-top:16px;max-width:42em}
+svg{display:block}
+.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* botões */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:56px;padding:0 24px;border-radius:var(--r-pill);font:inherit;font-size:var(--fs-16);font-weight:700;color:#fff;text-decoration:none;white-space:nowrap;border:0;cursor:pointer;flex:none;transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
+.btn .i{width:18px;height:18px;transition:transform .2s ease}
+.btn-main{position:relative;overflow:hidden;background:var(--btn);box-shadow:var(--glow)}
+.btn-main:hover{transform:translateY(-1px)}
+.btn-main:hover .i{transform:translateX(3px)}
+.btn-main::after{content:"";position:absolute;inset:0 auto 0 -70%;width:45%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-18deg);transition:left .6s ease}
+.btn-main:hover::after{left:130%}
+.btn-line{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.55)}
+.btn-line:hover{background:rgba(255,255,255,.09)}
+.btn-sm{height:48px;padding:0 20px;font-size:var(--fs-14)}
+.btn:focus-visible,a:focus-visible,input:focus-visible,button:focus-visible{outline:2px solid #4A86F7;outline-offset:3px}
+
+/* ícones */
+.ic{flex:none;display:grid;place-items:center;border-radius:var(--r-16)}
+.ic-grad{width:48px;height:48px;color:#fff;background:var(--btn)}
+.ic-grad .i{width:24px;height:24px}
+.ic-line{width:40px;height:40px;border-radius:12px;color:var(--neutral-ic);border:1px solid var(--line-2);background:rgba(255,255,255,.02)}
+
+/* cabeçalho fixo */
+.hdr{position:fixed;inset:0 0 auto 0;z-index:40;padding-top:env(safe-area-inset-top,0px);transition:background .25s ease,box-shadow .25s ease,backdrop-filter .25s ease}
+.hdr .wrap{height:88px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.hdr.scrolled{background:rgba(14,16,24,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line)}
+.hdr.scrolled .wrap{height:72px}
+.hdr .btn-main{box-shadow:0 4px 12px -8px rgba(74,134,247,.6)}
+.logo{display:block;width:120px;height:auto}
+.nav{display:flex;align-items:center;gap:28px}
+.nav a.lk{font-size:var(--fs-16);font-weight:600;text-decoration:none;color:rgba(255,255,255,.88)}
+.nav a.lk:hover{color:#fff}
+
+/* topo */
+.hero{position:relative;overflow:hidden;background:var(--hero);min-height:max(850px,100vh)}
+.hero::after{content:"";position:absolute;inset:auto 0 0 0;height:200px;background:linear-gradient(180deg,rgba(14,16,24,0),#0E1018);pointer-events:none;z-index:1}
+.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:44% 56%;min-height:max(850px,100vh);padding-top:142px}
+.copy{align-self:start;padding-top:12px}
+.pill{display:inline-flex;align-items:center;gap:10px;height:36px;padding:0 16px;border-radius:var(--r-pill);background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.26);font-size:var(--fs-14);font-weight:600}
+.pill i{width:8px;height:8px;border-radius:50%;background:#7FF3FF}
+.hero h1{font-size:clamp(40px,4vw,56px);font-weight:800;line-height:1.08;margin:22px 0 18px;max-width:12em}
+.hero .sub{font-size:var(--fs-18);line-height:1.55;color:rgba(255,255,255,.9);max-width:30em}
+.acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.trust{display:grid;grid-template-columns:repeat(2,max-content);gap:12px 32px;margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,.16);max-width:34em}
+.trust span{display:inline-flex;align-items:center;gap:8px;font-size:var(--fs-14);color:rgba(255,255,255,.74)}
+.trust .i{width:18px;height:18px}
+.vis{position:relative;height:100%;min-height:708px}
+.photo{position:absolute;bottom:0;left:47%;height:100%;width:auto;z-index:1;-webkit-mask-image:linear-gradient(to bottom,#000 80%,transparent 100%);mask-image:linear-gradient(to bottom,#000 80%,transparent 100%)}
+.thread{position:absolute;z-index:3;left:2%;top:24px;width:300px;display:flex;flex-direction:column;gap:8px}
+.badge{position:absolute;z-index:4;left:2%;display:flex;align-items:center;gap:12px;padding:10px 18px 10px 10px;border-radius:var(--r-pill);background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);line-height:1.3}
+.badge .bi{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.18)}
+.badge b{display:block;font-size:var(--fs-14);font-weight:700}
+.badge small{display:block;font-size:var(--fs-12);color:rgba(255,255,255,.78)}
+.thread .badge{position:static;align-self:flex-start}
+.thread .b-tempo{margin-bottom:8px}
+.thread .b-seg{margin-top:8px}
+
+/* conversa (tema escuro do WhatsApp em toda a página) */
+.bub{position:relative;max-width:88%;padding:8px 12px 6px;border-radius:12px;font-size:var(--fs-14);line-height:1.45;color:var(--wa-ink);box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.bub time{display:block;text-align:right;font-size:var(--fs-12);color:var(--wa-mute);margin-top:2px}
+.out{align-self:flex-end;background:var(--wa-out);border-top-right-radius:4px}
+.in{align-self:flex-start;background:var(--wa-in);border-top-left-radius:4px}
+.bub .ttl{display:block;font-weight:700;margin-bottom:6px}
+.bub .rows{display:grid;grid-template-columns:auto 1fr;gap:2px 12px;padding:8px 10px;border-radius:var(--r-8);background:rgba(0,0,0,.22)}
+.bub .rows span:nth-child(odd){color:var(--wa-mute)}
+.bub .ask{display:block;margin-top:6px;font-weight:700;color:var(--wa-ok)}
+.bub .ok{font-weight:700;color:var(--wa-ok)}
+.hero .bub{box-shadow:0 12px 30px -10px rgba(10,8,60,.55)}
+.thread .ttl{font-size:var(--fs-12);white-space:nowrap}
+.file{display:flex;align-items:center;gap:10px;margin-top:8px;padding:8px 10px;border-radius:var(--r-8);background:rgba(0,0,0,.22)}
+.file .i{width:22px;height:22px;color:var(--wa-ok)}
+.file b{display:block;font-size:var(--fs-14)}
+.file small{display:block;font-size:var(--fs-12);color:var(--wa-mute)}
+.wave{display:flex;align-items:center;gap:3px;height:22px;flex:1}
+.wave i{display:block;width:3px;border-radius:2px;background:rgba(233,237,239,.7)}
+.audio{display:flex;align-items:center;gap:10px;min-width:180px}
+.audio .i{width:16px;height:16px;fill:currentColor;stroke:none}
+
+/* seções */
+section.blk{padding-block:112px}
+.alt{background:var(--bg-2);border-block:1px solid var(--line)}
+.after-hero{background:var(--bg)}
+
+/* como funciona */
+#como-funciona{padding-block:48px 96px}
+#como-funciona .lead{margin-top:12px}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:auto auto;gap:24px;margin-top:48px}
+.step{display:grid;grid-row:span 2;grid-template-rows:subgrid;gap:20px;padding:24px;border-radius:var(--r-16);border:1px solid var(--line);background:rgba(255,255,255,.015);min-width:0}
+.step-head{display:flex;flex-direction:column;gap:8px}
+.step-n{font-size:var(--fs-14);font-weight:600;color:var(--muted);letter-spacing:.06em}
+.step h3{font-size:var(--fs-22);font-weight:700;line-height:1.3}
+.step p{font-size:var(--fs-16);color:var(--muted);margin-top:8px}
+.frame{min-height:208px;display:flex;flex-direction:column;justify-content:center;gap:8px;padding:12px;border-radius:var(--r-16);background:var(--wa-bg);border:1px solid var(--line)}
+.frame .bub{max-width:92%}
+.frame .nf-card{max-width:100%;font-size:var(--fs-12);line-height:1.5}
+.nf-card .ttl{font-size:var(--fs-14)}
+.nf-l{display:block}
+.nw{white-space:nowrap}
+.nf-l b{font-weight:700}
+.nf-ask{display:block;margin-top:8px}
+.close{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px;margin-top:40px}
+.close p{font-size:var(--fs-18);font-weight:600}
+.m-only{display:none}
+
+/* segurança */
+.g-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:48px}
+.g-card{display:flex;flex-direction:column;gap:12px;padding:28px;border-radius:var(--r-24);background:var(--surface);border:1px solid var(--line-2);box-shadow:var(--sh-1);transition:transform .2s ease,border-color .2s ease}
+.g-card h3{font-size:var(--fs-22);font-weight:700;line-height:1.3;margin-top:4px}
+.g-card p{font-size:var(--fs-16);color:var(--muted)}
+.g-card p b{color:var(--fg)}
+.g-card .foot{font-size:var(--fs-12);color:var(--soft)}
+.q-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:16px}
+.q-card{display:flex;gap:16px;align-items:flex-start;padding:20px 24px;border-radius:var(--r-16);border:1px solid var(--line-2);transition:border-color .2s ease,background .2s ease}
+.q-card h3{font-size:var(--fs-18);font-weight:700;line-height:1.35}
+.q-card p{font-size:var(--fs-16);color:var(--muted);margin-top:4px}
+.q-card p b{color:var(--fg)}
+.g-card:hover{transform:translateY(-2px);border-color:#3A4555}
+.q-card:hover{border-color:#3A4555;background:rgba(255,255,255,.02)}
+.help{display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center;justify-content:space-between;margin-top:32px;padding-top:32px;border-top:1px solid var(--line-2)}
+.help p{display:flex;align-items:center;gap:14px;font-size:var(--fs-16);color:var(--muted)}
+.help b{color:var(--fg);font-weight:600}
+
+/* quem criou */
+section.founder{padding-block:140px;background:#F7F6F3;color:#1C1F2E}
+.founder .kicker{color:#5A6470}
+.founder .h2{color:#0E1018}
+.founder .fd-text p{color:#1C1F2E}
+.founder .fala{color:#0E1018}
+.founder .sign b{color:#0E1018}
+.founder .sign span{color:#5A6470}
+.founder .sign::before{background:#2BBDF2}
+.fd-grid{display:grid;grid-template-columns:5fr 6fr;gap:8%;align-items:start}
+.fd-photo{margin:0;max-width:100%}
+.fd-photo img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:center 30%;border-radius:var(--r-16);box-shadow:var(--sh-1);background:#ECEAE5}
+.fd-photo figcaption{margin-top:12px;font-size:var(--fs-14);color:#5A6470}
+.fd-text{max-width:560px}
+.fd-text p{font-size:var(--fs-18);line-height:1.7;color:var(--muted);margin-top:20px;text-wrap:pretty}
+.fd-text .h2{margin-bottom:8px}
+.fala{color:var(--fg);font-style:italic}
+.sign{margin-top:36px}
+.sign::before{content:"";display:block;width:40px;height:2px;border-radius:2px;background:var(--accent);margin-bottom:16px}
+.sign b{display:block;font-size:var(--fs-18);font-weight:600}
+.sign span{display:block;font-size:var(--fs-14);color:var(--muted)}
+@media (max-width:1023px){section.founder{padding-block:110px}.fd-grid{grid-template-columns:1fr;gap:40px}.fd-photo{width:100%;max-width:480px}}
+
+/* preço */
+.price-grid{display:grid;grid-template-columns:minmax(0,1fr) 440px;gap:64px;align-items:center}
+.tsteps{list-style:none;padding:0;margin:32px 0 0;display:flex;flex-direction:column;gap:20px;counter-reset:t;max-width:32em}
+.tsteps li{counter-increment:t;display:grid;grid-template-columns:40px 1fr;column-gap:16px}
+.tsteps li::before{content:counter(t);grid-row:span 2;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-size:var(--fs-16);font-weight:700;color:#fff;border:1px solid #343E4D}
+.tsteps b{font-size:var(--fs-18)}
+.tsteps span{font-size:var(--fs-16);color:var(--muted)}
+.card{padding:32px;border-radius:var(--r-24);background:var(--surface);border:1px solid var(--line-2);box-shadow:var(--sh-2)}
+.tag-free{display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:var(--r-pill);background:var(--surface-2);border:1px solid #343E4D;color:#E6EAF0;font-size:var(--fs-14);font-weight:600}
+.amount{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;margin-top:20px}
+.amount strong{font-size:var(--fs-56);font-weight:800;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.amount span{font-size:var(--fs-16);color:var(--muted)}
+.card .note-s{font-size:var(--fs-14);color:var(--muted);margin-top:8px}
+.ben{list-style:none;padding:24px 0 0;margin:24px 0;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:16px}
+.ben li{display:flex;gap:12px}
+.ben .i{width:22px;height:22px;color:var(--neutral-ic);flex:none;margin-top:1px}
+.ben b{display:block;font-size:var(--fs-16)}
+.ben span{display:block;font-size:var(--fs-14);color:var(--muted)}
+.card .btn{width:100%}
+
+/* formulário */
+.form-grid{display:grid;grid-template-columns:minmax(0,1fr) 440px;gap:64px;align-items:center}
+.assist{display:flex;gap:16px;margin-top:32px;max-width:32em}
+.assist b{display:block;font-size:var(--fs-16)}
+.assist span{display:block;font-size:var(--fs-16);color:var(--muted)}
+.form{display:flex;flex-direction:column;gap:16px;padding:32px;border-radius:var(--r-24);background:var(--surface);border:1px solid var(--line-2);box-shadow:var(--sh-2)}
+.form label{display:flex;flex-direction:column;gap:8px;font-size:var(--fs-14);font-weight:600;color:var(--muted)}
+.form input{height:48px;padding:0 16px;border-radius:var(--r-8);border:1px solid var(--line-2);background:var(--bg);color:var(--fg);font:inherit;font-size:var(--fs-16);transition:border-color .2s ease,box-shadow .2s ease}
+.form input::placeholder{color:var(--soft)}
+.form input:focus{outline:none;border-color:#4A86F7;box-shadow:0 0 0 3px rgba(74,134,247,.3)}
+.form .btn{width:100%;margin-top:8px}
+.form-trust{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 20px;font-size:var(--fs-12);color:var(--soft)}
+.form-trust span{display:inline-flex;align-items:center;gap:6px}
+.form-err{margin:0;font-size:var(--fs-14);color:#FF9B9B;text-align:center}
+.form-trust .i{width:14px;height:14px}
+.success{text-align:center;padding-block:24px}
+.success .ic{margin:0 auto}
+.success h3{font-size:var(--fs-22);margin-top:16px}
+.success p{color:var(--muted);margin-top:8px}
+
+/* rodapé */
+footer{border-top:1px solid var(--line);padding-block:64px 40px;background:#0A0C12}
+.f-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
+.f-brand p{font-size:var(--fs-14);color:var(--muted);margin-top:16px;max-width:24em}
+.f-col h4{margin:0 0 16px;font-size:var(--fs-12);font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--soft)}
+.f-col a{display:block;font-size:var(--fs-14);color:var(--muted);text-decoration:none;padding-block:4px}
+.f-col a:hover{color:#fff}
+.f-fine{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-size:var(--fs-12);line-height:1.6;color:var(--soft);max-width:none}
+.f-legal{margin-top:12px;font-size:var(--fs-12);color:var(--soft);max-width:none}
+
+/* movimento: entrada sutil por seção */
+.rv{transition:opacity .3s ease,transform .3s ease}
+.rv.pre{opacity:0;transform:translateY(12px)}
+
+/* notas da proposta (somem com "Ocultar notas") */
+
+/* responsivo */
+@media (max-width:1400px){.acts .btn{padding:0 20px}}
+@media (min-width:1024px){
+  .thread{width:272px}
+  .thread .bub{max-width:100%}
+  .thread .badge b{white-space:nowrap}
+}
+@media (min-width:1024px) and (max-width:1160px){.thread .bub.mid,.thread .b-seg{display:none}}
+@media (max-width:1180px){
+  .steps{grid-template-columns:1fr;grid-template-rows:none;gap:16px}
+  .step{display:grid;grid-row:auto;grid-template-rows:none;grid-template-columns:minmax(0,1fr) minmax(0,360px);gap:32px;align-items:center}
+  .frame{margin-top:0;min-height:0}
+}
+@media (max-width:1023px){
+  section.blk{padding-block:88px}
+  .hero{min-height:0}
+  .hero-grid{grid-template-columns:1fr;min-height:0;padding-top:120px;gap:24px}
+  .vis{min-height:0;height:auto;display:flex;flex-direction:column;gap:16px;max-width:560px;width:100%;margin-inline:auto}
+  .photo{position:static;height:460px;width:auto;max-width:100%;margin:0 auto;-webkit-mask-image:linear-gradient(to bottom,#000 72%,transparent 100%);mask-image:linear-gradient(to bottom,#000 72%,transparent 100%)}
+  .thread{position:static;width:auto;padding-bottom:40px}
+  .thread .bub.mid{display:none}
+  .badge{display:none}
+  .price-grid,.form-grid{grid-template-columns:1fr;gap:40px}
+  .g-cards{grid-template-columns:1fr}
+  .f-top{grid-template-columns:1fr 1fr;gap:32px}
+  .nav a.lk{display:none}
+}
+@media (max-width:680px){
+  .wrap{width:calc(100% - 32px)}
+  .hdr .wrap{height:72px}
+  .logo{width:96px}
+  .h2{font-size:var(--fs-28)}
+  .hero h1{font-size:var(--fs-40)}
+  .acts{flex-direction:column}
+  .acts .btn{width:100%}
+  .photo{height:380px}
+  .q-cards{grid-template-columns:1fr;gap:12px}
+  .trust{grid-template-columns:1fr}
+  .q-card{padding:16px}
+  .g-card{padding:24px}
+  #como-funciona{padding-block:72px}
+  .step{display:flex;flex-direction:column;padding:20px;gap:16px;align-items:stretch}
+  .step-head{flex-direction:row;align-items:baseline;gap:10px}
+  .frame{padding:10px;gap:6px}
+  .steps{gap:12px;margin-top:32px}
+  .step{gap:12px}
+  .step p{margin-top:4px}
+  .frame .bub{max-width:100%}
+  .step .frame .bub.in{min-width:0!important;width:100%;max-width:100%}
+  .step h3{font-size:var(--fs-18)}
+  #como-funciona .h2{margin-top:8px}
+  .step:first-child .frame .bub:nth-child(2){display:none}
+  .m-only{display:inline}
+  .close{margin-top:24px}
+  .close p{display:none}
+  .close{justify-content:center;text-align:center}
+  .close .btn{width:100%}
+  .card,.form{padding:24px}
+  .amount strong{font-size:var(--fs-40)}
+  .f-top{grid-template-columns:1fr}
+  .help .btn{width:100%}
+}
+@media (max-width:400px){.tag-free{font-size:var(--fs-12);white-space:nowrap;padding:0 12px}}
+@media (max-width:480px){.form-trust > span:first-child{flex-basis:100%;justify-content:center}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}html{scroll-behavior:auto}.rv.pre{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a href="#" aria-label="LéIA, início"><img class="logo" src="/img/logo-branco.png" alt="LéIA"></a>
+    <nav class="nav" aria-label="Principal">
+      <a class="lk" href="#como-funciona">Como funciona</a>
+      <a class="lk" href="#seguranca">Segurança</a>
+      <a class="lk" href="#sobre">Sobre</a>
+      <a class="lk" href="#preco">Preço</a>
+      <a class="btn btn-main btn-sm" href="#teste">Testar grátis</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- TOPO (composição aprovada) -->
+  <section class="hero" aria-labelledby="h1">
+    <div class="wrap hero-grid">
+      <div class="copy">
+        <span class="pill"><i></i>Teste grátis por 30 dias</span>
+        <h1 id="h1">Mande uma mensagem.<br>A LéIA emite a&nbsp;nota.</h1>
+        <p class="sub">Por texto ou áudio, no WhatsApp. A nota sai no Emissor Nacional, fica guardada e o paciente (ou quem paga) recebe por e‑mail.</p>
+        <div class="acts">
+          <a class="btn btn-main" href="#teste">Testar grátis por 30 dias<svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-line" href="#como-funciona">Ver como funciona<svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+        </div>
+        <div class="trust" aria-label="Garantias">
+          <span><svg class="i" viewBox="0 0 24 24"><path d="M4 10l8-5 8 5"/><path d="M6 10v8M10 10v8M14 10v8M18 10v8M4 20h16"/></svg>Emissor Nacional (gov.br)</span>
+          <span><svg class="i" viewBox="0 0 24 24"><path d="M4 20l1.3-4.2A8 8 0 1 1 8.4 19z"/></svg>WhatsApp oficial da Meta</span>
+          <span><svg class="i" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg>LGPD</span>
+          <span><svg class="i" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="6" rx="1.5"/><rect x="4" y="14" width="16" height="6" rx="1.5"/><path d="M8 7h.01M8 17h.01"/></svg>Data center ISO 27001 no Brasil</span>
+        </div>
+      </div>
+      <div class="vis">
+        <img class="photo" src="/img/hero-celular.webp" width="791" height="1200" alt="Psicóloga sorrindo enquanto olha a LéIA no celular">
+        <div class="thread" aria-label="Exemplo de conversa com a LéIA">
+  <div class="badge b-tempo"><span class="bi"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg></span><span><b>Nota emitida em menos de 1 min</b><small>sem abrir o portal</small></span></div>
+          <div class="bub out">Emite uma nota pra Maria, sessão de R$&nbsp;250.<time>09:14 ✓✓</time></div>
+          <div class="bub in mid"><span class="ttl">🧾 Confirmação — Registro de NFS&#8209;e</span><span class="rows"><span>Paciente</span><span>Maria</span><span>Serviço</span><span>Sessão de psicologia</span><span>Valor</span><span>R$&nbsp;250,00</span></span><span class="ask">Confirma o registro? Responda <b>SIM</b> para prosseguir.</span><time>09:14</time></div>
+          <div class="bub out mid">SIM<time>09:15</time></div>
+          <div class="bub in"><span class="ok">✅ Pronto!</span> NFS-e emitida. Mandei o PDF para o e‑mail da Maria.<time>09:15</time></div>
+          <div class="badge b-seg"><span class="bi"><svg class="i" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg></span><span><b>Seus dados protegidos</b><small>Conexão criptografada e sigilo</small></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section class="blk after-hero" id="como-funciona" aria-labelledby="how-t">
+    <div class="wrap">
+      <div class="rv">
+        <span class="kicker">Simples assim</span>
+        <h2 class="h2" id="how-t">Como a <span class="hl">LéIA</span> funciona</h2>
+        <p class="lead">Uma conversa no WhatsApp começa e termina a emissão.<span class="m-only"> Sem portal, sem senha, sem planilha.</span></p>
+      </div>
+      <div class="steps">
+        <article class="step rv">
+          <div class="step-txt">
+            <div class="step-head"><span class="step-n">01</span><h3>Você manda uma mensagem</h3></div>
+            <p>Texto ou áudio, do seu jeito. É só isso.</p>
+          </div>
+          <div class="frame">
+            <div class="bub out">Emite nota pra Ana Lima, consulta de R$&nbsp;300<time>14:32 ✓✓</time></div>
+            <div class="bub out"><span class="audio"><svg class="i" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><span class="wave" aria-hidden="true"><i style="height:10px"></i><i style="height:18px"></i><i style="height:12px"></i><i style="height:20px"></i><i style="height:8px"></i><i style="height:16px"></i><i style="height:13px"></i><i style="height:19px"></i><i style="height:11px"></i><i style="height:15px"></i></span><time style="margin:0">0:12</time></span></div>
+          </div>
+        </article>
+        <article class="step rv">
+          <div class="step-txt">
+            <div class="step-head"><span class="step-n">02</span><h3>A LéIA confirma com você</h3></div>
+            <p>Ela mostra os dados da nota e só emite depois do seu ok.</p>
+          </div>
+          <div class="frame">
+            <div class="bub in nf-card"><span class="ttl">🧾 Confirmação — Registro de NFS&#8209;e</span><span class="nf-l"><b>Emitente:</b> Ana Souza Psicologia Ltda</span><span class="nf-l"><b>Tomador:</b> Ana Lima — <span class="nw">123.456.789&#8209;00</span></span><span class="nf-l"><b>Descrição do Serviço:</b> Sessão de Psicoterapia</span><span class="nf-l"><b>Código de Tributação Nacional:</b> <span class="nw">041601</span></span><span class="nf-l"><b>Valor Total da Nota:</b> <span class="nw">R$&nbsp;300,00</span></span><span class="nf-l"><b>Data de Competência:</b> <span class="nw">10/10/2026</span></span><span class="nf-ask">Confirma o registro? Responda <b>SIM</b> para prosseguir.</span><time>14:32</time></div>
+            <div class="bub out">SIM<time>14:33 ✓✓</time></div>
+          </div>
+        </article>
+        <article class="step rv">
+          <div class="step-txt">
+            <div class="step-head"><span class="step-n">03</span><h3>Emitida, salva e enviada</h3></div>
+            <p>A nota sai no Emissor Nacional, fica guardada e chega ao e‑mail do paciente (ou de quem paga).</p>
+          </div>
+          <div class="frame">
+            <div class="bub in"><span class="ok">✓ Pronto!</span> NFS-e emitida. O PDF já foi para a&nbsp;Ana.<span class="file"><svg class="i" viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M10 13h5M10 16h5"/></svg><span><b class="nw">NFS&#8209;e_AnaLima.pdf</b><small>Enviada · 14:33</small></span></span><time>14:33</time></div>
+          </div>
+        </article>
+      </div>
+      <div class="close rv">
+        <p>Sem portal, sem senha, sem planilha.</p>
+        <a class="btn btn-main" href="#teste">Testar grátis por 30 dias<svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- SEGURANÇA (textos aprovados em 10/10) -->
+  <section class="blk alt" id="seguranca" aria-labelledby="seg-t">
+    <div class="wrap">
+      <div class="rv">
+        <span class="kicker">Segurança e sigilo</span>
+        <h2 class="h2" id="seg-t">Sigilo faz parte do seu trabalho. <span class="hl">Do nosso também.</span></h2>
+        <p class="lead">Uma nota fiscal de psicologia mostra que alguém faz terapia. Por isso os seus dados e os dos seus pacientes ficam protegidos em cada etapa: na conversa pelo WhatsApp, na inteligência artificial e no armazenamento.</p>
+      </div>
+      <div class="g-cards">
+        <article class="g-card rv"><span class="ic ic-grad"><svg class="i" viewBox="0 0 24 24"><path d="M4 20l1.3-4.2A8 8 0 1 1 8.4 19z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 .8c-1-.5-1.8-1.3-2.3-2.3l.8-1-1-2z"/></svg></span><h3>WhatsApp oficial da Meta</h3><p>A LéIA usa a conexão oficial do WhatsApp para empresas, que segue os rígidos padrões de segurança da Meta. As suas mensagens viajam criptografadas*.</p><small class="foot">*Codificadas, de um jeito que só quem recebe consegue ler.</small></article>
+        <article class="g-card rv"><span class="ic ic-grad"><svg class="i" viewBox="0 0 24 24"><path d="M12 3.5l1.9 5 5 1.9-5 1.9-1.9 5-1.9-5-5-1.9 5-1.9z"/><path d="M18.5 15.5l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg></span><h3>IA contratada para uso profissional</h3><p>Usamos serviços de inteligência artificial em plano profissional. Eles não armazenam as suas informações nem as usam para treinar os modelos deles.</p></article>
+      </div>
+      <div class="q-cards">
+        <article class="q-card rv"><span class="ic ic-line"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M8.5 12.2l2.4 2.4 4.6-5"/></svg></span><div><h3>Alguma nota pode ser emitida sem eu saber?</h3><p>Não, de forma alguma. A LéIA só emite uma nota fiscal com a sua autorização <b>explícita</b>.</p></div></article>
+        <article class="q-card rv"><span class="ic ic-line"><svg class="i" viewBox="0 0 24 24"><path d="M12 4v16M7 20h10"/><path d="M5 8h14"/><path d="M5 8l-2.5 6a2.5 2.5 0 0 0 5 0z"/><path d="M19 8l-2.5 6a2.5 2.5 0 0 0 5 0z"/></svg></span><div><h3>A LéIA segue a LGPD?</h3><p>Sim. A LéIA foi pensada para proteger os seus dados e os dos seus pacientes, seguindo à risca a Lei Geral de Proteção de Dados.</p></div></article>
+        <article class="q-card rv"><span class="ic ic-line"><svg class="i" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="6" rx="1.5"/><rect x="4" y="14" width="16" height="6" rx="1.5"/><path d="M8 7h.01M8 17h.01M12 7h4M12 17h4"/></svg></span><div><h3>Onde os dados ficam guardados?</h3><p>Em data centers no Brasil, de padrão internacional, com os mais altos níveis de segurança e certificação ISO 27001.</p></div></article>
+        <article class="q-card rv"><span class="ic ic-line"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1.2-3.6 3.8-5.5 7-5.5s5.8 1.9 7 5.5"/></svg></span><div><h3>Quem vê os dados dos meus pacientes?</h3><p>Só você. As informações são processadas pelo sistema, sem intervenção humana, e ficam guardadas com segurança. A LéIA só acessa o que você pedir.</p></div></article>
+        <article class="q-card rv"><span class="ic ic-line"><svg class="i" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg></span><div><h3>E se eu errar uma nota?</h3><p>Antes de emitir, é só pedir para a LéIA corrigir. Se a nota já saiu, peça o cancelamento pela conversa e a LéIA cuida do resto.</p></div></article>
+        <article class="q-card rv"><span class="ic ic-line"><svg class="i" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="M10.8 12.2L20 3M16 7l2.5 2.5M18.5 4.5L21 7"/></svg></span><div><h3>Como posso ter segurança sobre o uso do meu certificado digital?</h3><p>Cada uso do seu certificado, para emitir ou cancelar uma nota, fica registrado com data e hora no nosso sistema, pronto para auditoria.</p></div></article>
+      </div>
+      <div class="help rv">
+        <p><span class="ic ic-line"><svg class="i" viewBox="0 0 24 24"><path d="M4 20l1.3-4.2A8 8 0 1 1 8.4 19z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 .8c-1-.5-1.8-1.3-2.3-2.3l.8-1-1-2z"/></svg></span><span>Ficou com alguma dúvida sobre segurança? <b>Quem responde é uma pessoa da equipe.</b></span></p>
+        <a class="btn btn-line" href="https://wa.me/555199151226" target="_blank" rel="noopener">Falar com a gente pelo WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE (texto aprovado pelo Leonardo, 10/10) -->
+  <section class="blk founder" id="sobre" aria-labelledby="fd-t">
+    <div class="wrap">
+      <div class="fd-grid">
+        <figure class="fd-photo rv">
+          <img src="/img/fundador.webp" srcset="/img/fundador-640.webp 640w, /img/fundador.webp 928w" sizes="(max-width:1023px) min(100vw - 32px, 480px), 42vw" width="928" height="1152" loading="lazy" alt="Leonardo Barreto e a esposa, psicóloga, olhando a LéIA no celular">
+          <figcaption>Leonardo e sua esposa, Luiziana Schaefer</figcaption>
+        </figure>
+        <div class="fd-text rv">
+          <span class="kicker">Sobre a LéIA</span>
+          <h2 class="h2" id="fd-t">A LéIA nasceu aqui em casa.</h2>
+          <p>Sou Leonardo Barreto, mais conhecido como Léo, e tenho mais de 20 anos de carreira na área de Tecnologia da Informação. A&nbsp;LéIA nasceu de um problema que eu via todo mês dentro de casa.</p>
+          <p>Um dia, passando pelo escritório da minha esposa, que é psicóloga, vi ela debruçada sobre as sessões do mês, separando tudo para mandar aos pacientes e emitir as notas fiscais. Estava muito estressada. Perguntei como eu podia ajudar, e ela respondeu: <span class="fala">“Emitindo as notas dos meus pacientes”</span>.</p>
+          <p>Foi aí que eu entendi o tamanho do problema. Na época, eu trabalhava num projeto de inteligência artificial numa empresa de tecnologia, e brinquei com ela: <span class="fala">“Eu posso resolver esse problema para ti. Vou criar um agente de inteligência artificial para te ajudar.”</span></p>
+          <p>Algum tempo depois, apresentei a LéIA para ela. Hoje a LéIA não ajuda apenas a Luiziana: ela já emite as notas fiscais de dezenas de profissionais.</p>
+          <div class="sign"><b>Leonardo Barreto</b><span>Idealizador da LéIA</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREÇO -->
+  <section class="blk alt" id="preco" aria-labelledby="preco-t">
+    <div class="wrap">
+      <div class="price-grid">
+        <div class="rv">
+          <span class="kicker">Condição de lançamento</span>
+          <h2 class="h2" id="preco-t">Um preço só. <span class="hl">Sem surpresa.</span></h2>
+          <p class="lead">Um preço fixo por mês, sem pacote de notas e sem cobrança por nota emitida.</p>
+          <ol class="tsteps">
+            <li><b>Você se cadastra</b><span>Nome, e‑mail e WhatsApp. Leva um minuto.</span></li>
+            <li><b>A gente configura junto</b><span>Uma pessoa da equipe faz o passo a passo com você, inclusive o certificado digital.</span></li>
+            <li><b>30 dias usando de verdade</b><span>Emita as notas do mês pela LéIA. Se não fizer sentido, é só avisar.</span></li>
+          </ol>
+        </div>
+        <div class="card rv">
+          <span class="tag-free">Os primeiros 30 dias são por nossa conta</span>
+          <p class="amount"><strong>R$&nbsp;89,90</strong><span>/mês, por CNPJ</span></p>
+          <p class="note-s">Um valor só, com tudo abaixo incluído.</p>
+          <ul class="ben">
+            <li><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M8.5 12.2l2.4 2.4 4.6-5"/></svg><div><b>Sem limite de notas</b><span>Atendeu 10 ou 100 pacientes no mês: o preço é o mesmo.</span></div></li>
+            <li><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M8.5 12.2l2.4 2.4 4.6-5"/></svg><div><b>A qualquer hora</b><span>De madrugada ou no domingo, a LéIA responde.</span></div></li>
+            <li><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M8.5 12.2l2.4 2.4 4.6-5"/></svg><div><b>Notas guardadas e organizadas</b><span>Cada PDF salvo e fácil de achar quando precisar.</span></div></li>
+            <li><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M8.5 12.2l2.4 2.4 4.6-5"/></svg><div><b>Direto no Emissor Nacional</b><span>A nota sai no Emissor Nacional, o sistema oficial da NFS-e, sem você abrir nada.</span></div></li>
+          </ul>
+          <a class="btn btn-main" href="#teste">Testar grátis por 30 dias<svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMULÁRIO -->
+  <section class="blk" id="teste" aria-labelledby="form-t">
+    <div class="wrap">
+      <div class="form-grid">
+        <div class="rv">
+          <span class="kicker">Comece agora</span>
+          <h2 class="h2" id="form-t">Deixe as suas notas por conta da <span class="hl">LéIA.</span></h2>
+          <p class="lead">Preencha seus dados. A gente te chama no WhatsApp para deixar a LéIA pronta para te atender e começar seus 30 dias grátis.</p>
+          <div class="assist"><span class="ic ic-line"><svg class="i" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c1-3.2 3-4.8 5.5-4.8s4.5 1.6 5.5 4.8"/><path d="M15 11.5l2 2 4-4"/></svg></span><div><b>Configuração acompanhada</b><span>Uma pessoa da equipe faz o passo a passo com você, inclusive a parte do certificado digital A1.</span></div></div>
+        </div>
+        <form class="form rv" id="lead" novalidate>
+          <label for="f-nome">Nome completo<input id="f-nome" name="nome" autocomplete="name" placeholder="Seu nome" required></label>
+          <label for="f-email">E‑mail<input id="f-email" name="email" type="email" autocomplete="email" placeholder="voce@email.com" required></label>
+          <label for="f-tel">WhatsApp<input id="f-tel" name="telefone" type="tel" autocomplete="tel" placeholder="(11) 99999-9999" required></label>
+          <button class="btn btn-main" type="submit">Testar grátis por 30 dias<svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          <div class="form-trust"><span><svg class="i" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Seus dados protegidos</span><span>Sem spam</span><span>Sem compromisso</span></div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <div class="f-brand">
+        <img class="logo" src="/img/logo-branco.png" alt="LéIA">
+        <p>A LéIA emite, salva e envia as suas notas fiscais para você usar seu tempo com o que importa: seus pacientes.</p>
+      </div>
+      <nav class="f-col" aria-label="Produto"><h4>Produto</h4><a href="#como-funciona">Como funciona</a><a href="#seguranca">Segurança</a><a href="#preco">Preço</a></nav>
+      <nav class="f-col" aria-label="Empresa"><h4>Empresa</h4><a href="#sobre">Sobre a LéIA</a><a href="#">Agentrika</a><a href="https://wa.me/555199151226" target="_blank" rel="noopener">Falar com a gente pelo WhatsApp</a><a href="mailto:contato@agentrika.com.br">contato@agentrika.com.br</a></nav>
+      <nav class="f-col" aria-label="Legal"><h4>Legal</h4><a href="/privacy-policy">Política de Privacidade</a><a href="/termos-de-uso">Termos de Uso</a></nav>
+    </div>
+    <p class="f-fine">Para psicólogas com CNPJ no Simples Nacional, a emissão é pelo Emissor Nacional, padrão obrigatório a partir de 01/11/2026. Conferimos a sua cidade no cadastro. Tributos (ISS e DAS do Simples) não estão incluídos no preço e seguem o seu regime. A LéIA emite com os dados que você e o seu contador definiram; apuração e pagamento de impostos continuam com o seu contador.</p>
+    <p class="f-legal">© 2026 Agentrika · marca de Barreto e Schaefer Treinamentos LTDA · CNPJ 27.419.182/0001-96 · Porto Alegre/RS</p>
+  </div>
+</footer>
+<script>
+(function(){
+  var hdr=document.getElementById('hdr');
+  function onScroll(){hdr.classList.toggle('scrolled',window.scrollY>24);}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  var f=document.getElementById('lead'), btn=f.querySelector('button[type=submit]'), label=btn.innerHTML;
+  f.addEventListener('submit',function(e){e.preventDefault();if(!f.checkValidity()){f.reportValidity();return;}
+    var err=f.querySelector('.form-err'); if(err) err.remove();
+    btn.disabled=true; btn.textContent='Enviando...';
+    fetch('/api/leads',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({nome:f.nome.value,email:f.email.value,telefone:f.telefone.value})})
+    .then(function(r){return r.json().catch(function(){return {};}).then(function(d){if(!r.ok) throw new Error(d.error||'Não foi possível enviar. Tente de novo.');});})
+    .then(function(){
+      f.innerHTML='<div class="success" role="status"><span class="ic ic-grad"><svg class="i" viewBox="0 0 24 24"><path d="M6 12.5l4 4 8-9"/></svg></span><h3>Recebemos seus dados!</h3><p>Em breve a gente te chama no WhatsApp para deixar a LéIA pronta para te atender e começar o seu teste grátis de 30 dias.</p></div>';})
+    .catch(function(x){
+      btn.disabled=false; btn.innerHTML=label;
+      var p=document.createElement('p'); p.className='form-err'; p.setAttribute('role','alert');
+      p.textContent=(x&&x.message)||'Não foi possível enviar. Tente de novo.'; btn.insertAdjacentElement('afterend',p);});
+  });
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!reduce && 'IntersectionObserver' in window){
+    var els=[].slice.call(document.querySelectorAll('.rv')), vh=window.innerHeight;
+    els.forEach(function(el){if(el.getBoundingClientRect().top>vh) el.classList.add('pre');});
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.remove('pre');io.unobserve(e.target);}});},{threshold:.12});
+    els.forEach(function(el){io.observe(el);});
+    setTimeout(function(){els.forEach(function(el){el.classList.remove('pre');});},4000);
+  }
+})();
+</script>
+</body>
+</html>
