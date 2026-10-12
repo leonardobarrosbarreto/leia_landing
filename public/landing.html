@@ -321,8 +321,8 @@ footer{border-top:1px solid var(--line);padding-block:64px 40px;background:#0A0C
 /* Topo no celular (12/10): foto + conversa na primeira tela */
 .thread .badge b{white-space:normal}
 @media (max-width:1023px){
- .hero{min-height:100vh;min-height:100svh}
- .hero .hero-grid{display:flex;flex-direction:column;min-height:100vh;min-height:100svh;padding-top:96px;padding-bottom:16px;gap:0}
+ .hero{min-height:0}
+ .hero .hero-grid{display:flex;flex-direction:column;min-height:0;padding-top:96px;padding-bottom:16px;gap:0}
  .hero .copy{display:contents}
  .hero .pill{order:1;align-self:flex-start}
  .hero .pill{display:none}
@@ -331,7 +331,7 @@ footer{border-top:1px solid var(--line);padding-block:64px 40px;background:#0A0C
  .hdr:not(.scrolled) .btn-main{opacity:0;transform:translateY(-6px);pointer-events:none}
  .hero h1{order:2;font-size:34px;line-height:1.08;margin:16px 0 0;max-width:none;letter-spacing:-.01em}
  .hero .sub{order:6;font-size:var(--fs-16);max-width:none;margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,.16)}
- .hero .vis{order:3;display:block;position:relative;flex:1 1 auto;min-height:340px;margin:4px -16px 0;max-width:none;width:auto}
+ .hero .vis{order:3;display:block;position:relative;flex:none;height:calc(100vh - 330px);height:calc(100svh - 330px);min-height:340px;max-height:620px;margin:4px -16px 0;max-width:none;width:auto}
  .hero .photo{position:absolute;right:-10%;bottom:0;height:100%;width:auto;margin:0;max-width:none;z-index:1;-webkit-mask-image:linear-gradient(to bottom,#000 84%,transparent 100%);mask-image:linear-gradient(to bottom,#000 84%,transparent 100%)}
  .hero .thread{position:absolute;left:16px;top:16px;bottom:16px;width:min(66%,256px);padding:0;gap:8px;z-index:3;justify-content:flex-end}
  .hero .thread .b-tempo{display:flex;position:static;margin:0 0 auto 0}
@@ -344,7 +344,7 @@ footer{border-top:1px solid var(--line);padding-block:64px 40px;background:#0A0C
  .hero .trust{order:7;margin-top:20px;padding-top:0;border-top:0}
  @keyframes lpop{to{opacity:1;transform:none}}
 }
-@media (max-width:360px){.hero h1{font-size:31px}}
+@media (max-width:360px){.hero h1{font-size:31px}.hero .vis{height:calc(100vh - 360px);height:calc(100svh - 360px)}}
 @media (prefers-reduced-motion:reduce){.hero .thread .bub.out,.hero .thread .bub.in{opacity:1;transform:none;animation:none}}
 </style>
 </head>
