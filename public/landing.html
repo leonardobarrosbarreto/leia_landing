@@ -319,30 +319,29 @@ footer{border-top:1px solid var(--line);padding-block:64px 40px;background:#0A0C
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}html{scroll-behavior:auto}.rv.pre{opacity:1;transform:none}}
 
 /* Topo no celular (12/10): foto + conversa na primeira tela */
+.thread .badge b{white-space:normal}
 @media (max-width:1023px){
  .hero{min-height:100vh;min-height:100svh}
- .hero .hero-grid{display:flex;flex-direction:column;min-height:100vh;min-height:100svh;padding-top:88px;padding-bottom:16px;gap:0}
+ .hero .hero-grid{display:flex;flex-direction:column;min-height:100vh;min-height:100svh;padding-top:96px;padding-bottom:16px;gap:0}
  .hero .copy{display:contents}
  .hero .pill{order:1;align-self:flex-start}
  .hero h1{order:2;font-size:34px;line-height:1.08;margin:16px 0 0;max-width:none;letter-spacing:-.01em}
- .hero .sub{order:7;font-size:var(--fs-16);max-width:none;margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,.16)}
- .hero .vis{order:3;display:block;position:relative;flex:1 1 auto;min-height:320px;margin:8px -16px 0;max-width:none;width:auto}
- .hero .vis::before{content:"";position:absolute;right:-10%;bottom:0;width:70%;height:90%;border-radius:50%;background:radial-gradient(closest-side,rgba(127,243,255,.28),rgba(127,243,255,0));filter:blur(28px);z-index:0}
- .hero .photo{position:absolute;right:-9%;bottom:0;height:100%;width:auto;margin:0;max-width:none;z-index:1;-webkit-mask-image:linear-gradient(to bottom,#000 85%,transparent 100%);mask-image:linear-gradient(to bottom,#000 85%,transparent 100%)}
- .hero .thread{position:absolute;left:16px;top:14px;bottom:16px;width:min(66%,256px);padding:0;gap:8px;z-index:3;justify-content:flex-end}
- .hero .thread .b-tempo{display:flex;position:static;margin:0 0 auto 0;animation:lfloat 6s ease-in-out infinite}
+ .hero .sub{order:6;font-size:var(--fs-16);max-width:none;margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,.16)}
+ .hero .vis{order:3;display:block;position:relative;flex:1 1 auto;min-height:340px;margin:4px -16px 0;max-width:none;width:auto}
+ .hero .photo{position:absolute;right:-10%;bottom:0;height:100%;width:auto;margin:0;max-width:none;z-index:1;-webkit-mask-image:linear-gradient(to bottom,#000 84%,transparent 100%);mask-image:linear-gradient(to bottom,#000 84%,transparent 100%)}
+ .hero .thread{position:absolute;left:16px;top:16px;bottom:16px;width:min(66%,256px);padding:0;gap:8px;z-index:3;justify-content:flex-end}
+ .hero .thread .b-tempo{display:flex;position:static;margin:0 0 auto 0}
  .hero .thread .bub{max-width:100%}
  .hero .thread .bub.mid,.hero .thread .b-seg{display:none}
  .hero .thread .bub.out,.hero .thread .bub.in{opacity:0;transform:translateY(10px) scale(.98);animation:lpop .5s cubic-bezier(.2,.8,.3,1) forwards}
  .hero .thread .bub.out{animation-delay:.6s}.hero .thread .bub.in:not(.mid){animation-delay:1.7s}
- .hero .acts{order:4;flex-direction:column;gap:6px;margin-top:12px}
+ .hero .acts{order:4;flex-direction:column;gap:6px;margin-top:8px}
  .hero .acts .btn-line{height:44px;background:none;border:0;font-weight:600;color:rgba(255,255,255,.85)}
- .hero .trust{order:8;margin-top:20px;padding-top:0;border-top:0}
+ .hero .trust{order:7;margin-top:20px;padding-top:0;border-top:0}
  @keyframes lpop{to{opacity:1;transform:none}}
- @keyframes lfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
 }
 @media (max-width:360px){.hero h1{font-size:31px}}
-@media (prefers-reduced-motion:reduce){.hero .thread .bub.out,.hero .thread .bub.in{opacity:1;transform:none;animation:none}.hero .thread .b-tempo{animation:none}}
+@media (prefers-reduced-motion:reduce){.hero .thread .bub.out,.hero .thread .bub.in{opacity:1;transform:none;animation:none}}
 </style>
 </head>
 <body>
@@ -382,7 +381,7 @@ footer{border-top:1px solid var(--line);padding-block:64px 40px;background:#0A0C
       <div class="vis">
         <img class="photo" src="/img/hero-celular.webp" width="791" height="1200" alt="Psicóloga sorrindo enquanto olha a LéIA no celular">
         <div class="thread" aria-label="Exemplo de conversa com a LéIA">
-  <div class="badge b-tempo"><span class="bi"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg></span><span><b>Nota emitida em menos de 1 min</b><small>sem abrir o portal</small></span></div>
+  <div class="badge b-tempo"><span class="bi"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg></span><span><b>Nota emitida e enviada ao paciente em menos de 1&nbsp;min</b></span></div>
           <div class="bub out">Emite uma nota pra Maria, sessão de R$&nbsp;250.<time>09:14 ✓✓</time></div>
           <div class="bub in mid"><span class="ttl">🧾 Confirmação — Registro de NFS&#8209;e</span><span class="rows"><span>Paciente</span><span>Maria</span><span>Serviço</span><span>Sessão de Psicoterapia</span><span>Valor</span><span>R$&nbsp;250,00</span></span><span class="ask">Confirma o registro? Responda <b>SIM</b> para prosseguir.</span><time>09:14</time></div>
           <div class="bub out mid">SIM<time>09:15</time></div>
