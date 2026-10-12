@@ -345,6 +345,15 @@ footer{border-top:1px solid var(--line);padding-block:64px 40px;background:#0A0C
 @media (max-width:360px){.hero h1{font-size:31px}.hero .hero-grid{--spare:max(0px,calc(100vh - 802px));--spare:max(0px,calc(100svh - 802px))}.hero .vis{height:calc(100vh - 382px - 2*var(--sp1));height:calc(100svh - 382px - 2*var(--sp1))}}
 @media (prefers-reduced-motion:reduce){.hero .thread .bub.out,.hero .thread .bub.in{opacity:1;transform:none;animation:none}}
 </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QXFNFYGWDH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-QXFNFYGWDH');
+</script>
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -587,6 +596,7 @@ src="https://www.facebook.com/tr?id=2379701746175034&ev=PageView&noscript=1"
     .then(function(r){return r.json().catch(function(){return {};}).then(function(d){if(!r.ok) throw new Error(d.error||'Não foi possível enviar. Tente de novo.');});})
     .then(function(){
       if(window.fbq){fbq('track','Lead');}
+    if(window.gtag){gtag('event','generate_lead',{event_category:'formulario',event_label:'landing'});}
     f.innerHTML='<div class="success" role="status"><span class="ic ic-grad"><svg class="i" viewBox="0 0 24 24"><path d="M6 12.5l4 4 8-9"/></svg></span><h3>Recebemos seus dados!</h3><p>Em breve a gente te chama no WhatsApp para deixar a LéIA pronta para te atender e começar o seu teste grátis de 30 dias.</p></div>';})
     .catch(function(x){
       btn.disabled=false; btn.innerHTML=label;
