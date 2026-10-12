@@ -317,6 +317,32 @@ footer{border-top:1px solid var(--line);padding-block:64px 40px;background:#0A0C
 @media (max-width:400px){.tag-free{font-size:var(--fs-12);white-space:nowrap;padding:0 12px}}
 @media (max-width:480px){.form-trust > span:first-child{flex-basis:100%;justify-content:center}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}html{scroll-behavior:auto}.rv.pre{opacity:1;transform:none}}
+
+/* Topo no celular (12/10): foto + conversa na primeira tela */
+@media (max-width:1023px){
+ .hero{min-height:100vh;min-height:100svh}
+ .hero .hero-grid{display:flex;flex-direction:column;min-height:100vh;min-height:100svh;padding-top:88px;padding-bottom:16px;gap:0}
+ .hero .copy{display:contents}
+ .hero .pill{order:1;align-self:flex-start}
+ .hero h1{order:2;font-size:34px;line-height:1.08;margin:16px 0 0;max-width:none;letter-spacing:-.01em}
+ .hero .sub{order:7;font-size:var(--fs-16);max-width:none;margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,.16)}
+ .hero .vis{order:3;display:block;position:relative;flex:1 1 auto;min-height:320px;margin:8px -16px 0;max-width:none;width:auto}
+ .hero .vis::before{content:"";position:absolute;right:-10%;bottom:0;width:70%;height:90%;border-radius:50%;background:radial-gradient(closest-side,rgba(127,243,255,.28),rgba(127,243,255,0));filter:blur(28px);z-index:0}
+ .hero .photo{position:absolute;right:-9%;bottom:0;height:100%;width:auto;margin:0;max-width:none;z-index:1;-webkit-mask-image:linear-gradient(to bottom,#000 85%,transparent 100%);mask-image:linear-gradient(to bottom,#000 85%,transparent 100%)}
+ .hero .thread{position:absolute;left:16px;top:14px;bottom:16px;width:min(66%,256px);padding:0;gap:8px;z-index:3;justify-content:flex-end}
+ .hero .thread .b-tempo{display:flex;position:static;margin:0 0 auto 0;animation:lfloat 6s ease-in-out infinite}
+ .hero .thread .bub{max-width:100%}
+ .hero .thread .bub.mid,.hero .thread .b-seg{display:none}
+ .hero .thread .bub.out,.hero .thread .bub.in{opacity:0;transform:translateY(10px) scale(.98);animation:lpop .5s cubic-bezier(.2,.8,.3,1) forwards}
+ .hero .thread .bub.out{animation-delay:.6s}.hero .thread .bub.in:not(.mid){animation-delay:1.7s}
+ .hero .acts{order:4;flex-direction:column;gap:6px;margin-top:12px}
+ .hero .acts .btn-line{height:44px;background:none;border:0;font-weight:600;color:rgba(255,255,255,.85)}
+ .hero .trust{order:8;margin-top:20px;padding-top:0;border-top:0}
+ @keyframes lpop{to{opacity:1;transform:none}}
+ @keyframes lfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+}
+@media (max-width:360px){.hero h1{font-size:31px}}
+@media (prefers-reduced-motion:reduce){.hero .thread .bub.out,.hero .thread .bub.in{opacity:1;transform:none;animation:none}.hero .thread .b-tempo{animation:none}}
 </style>
 </head>
 <body>
@@ -358,7 +384,7 @@ footer{border-top:1px solid var(--line);padding-block:64px 40px;background:#0A0C
         <div class="thread" aria-label="Exemplo de conversa com a LéIA">
   <div class="badge b-tempo"><span class="bi"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg></span><span><b>Nota emitida em menos de 1 min</b><small>sem abrir o portal</small></span></div>
           <div class="bub out">Emite uma nota pra Maria, sessão de R$&nbsp;250.<time>09:14 ✓✓</time></div>
-          <div class="bub in mid"><span class="ttl">🧾 Confirmação — Registro de NFS&#8209;e</span><span class="rows"><span>Paciente</span><span>Maria</span><span>Serviço</span><span>Sessão de psicologia</span><span>Valor</span><span>R$&nbsp;250,00</span></span><span class="ask">Confirma o registro? Responda <b>SIM</b> para prosseguir.</span><time>09:14</time></div>
+          <div class="bub in mid"><span class="ttl">🧾 Confirmação — Registro de NFS&#8209;e</span><span class="rows"><span>Paciente</span><span>Maria</span><span>Serviço</span><span>Sessão de Psicoterapia</span><span>Valor</span><span>R$&nbsp;250,00</span></span><span class="ask">Confirma o registro? Responda <b>SIM</b> para prosseguir.</span><time>09:14</time></div>
           <div class="bub out mid">SIM<time>09:15</time></div>
           <div class="bub in"><span class="ok">✅ Pronto!</span> NFS-e emitida. Mandei o PDF para o e‑mail da Maria.<time>09:15</time></div>
           <div class="badge b-seg"><span class="bi"><svg class="i" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg></span><span><b>Seus dados protegidos</b><small>Conexão criptografada e sigilo</small></span></div>
@@ -505,7 +531,7 @@ footer{border-top:1px solid var(--line);padding-block:64px 40px;background:#0A0C
         <form class="form rv" id="lead" novalidate>
           <label for="f-nome">Nome completo<input id="f-nome" name="nome" autocomplete="name" placeholder="Seu nome" required></label>
           <label for="f-email">E‑mail<input id="f-email" name="email" type="email" autocomplete="email" placeholder="voce@email.com" required></label>
-          <label for="f-tel">WhatsApp<input id="f-tel" name="telefone" type="tel" autocomplete="tel" placeholder="(11) 99999-9999" required></label>
+          <label for="f-tel">WhatsApp<input id="f-tel" name="telefone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(11) 99999-9999" pattern="[0-9\(\)\+ \-]{10,20}" title="Informe DDD e número, ex.: (11) 99999-9999" required></label>
           <button class="btn btn-main" type="submit">Testar grátis por 30 dias<svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
           <div class="form-trust"><span><svg class="i" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Seus dados protegidos</span><span>Sem spam</span><span>Sem compromisso</span></div>
         </form>
@@ -522,7 +548,7 @@ footer{border-top:1px solid var(--line);padding-block:64px 40px;background:#0A0C
         <p>A LéIA emite, salva e envia as suas notas fiscais para você usar seu tempo com o que importa: seus pacientes.</p>
       </div>
       <nav class="f-col" aria-label="Produto"><h4>Produto</h4><a href="#como-funciona">Como funciona</a><a href="#seguranca">Segurança</a><a href="#preco">Preço</a></nav>
-      <nav class="f-col" aria-label="Empresa"><h4>Empresa</h4><a href="#sobre">Sobre a LéIA</a><a href="#">Agentrika</a><a href="https://wa.me/555199151226" target="_blank" rel="noopener">Falar com a gente pelo WhatsApp</a><a href="mailto:contato@agentrika.com.br">contato@agentrika.com.br</a></nav>
+      <nav class="f-col" aria-label="Empresa"><h4>Empresa</h4><a href="#sobre">Sobre a LéIA</a><a href="https://wa.me/555199151226" target="_blank" rel="noopener">Falar com a gente pelo WhatsApp</a><a href="mailto:contato@agentrika.com.br">contato@agentrika.com.br</a></nav>
       <nav class="f-col" aria-label="Legal"><h4>Legal</h4><a href="/privacy-policy">Política de Privacidade</a><a href="/termos-de-uso">Termos de Uso</a></nav>
     </div>
     <p class="f-fine">Para psicólogas com CNPJ no Simples Nacional, a emissão é pelo Emissor Nacional, padrão obrigatório a partir de 01/11/2026. Conferimos a sua cidade no cadastro. Tributos (ISS e DAS do Simples) não estão incluídos no preço e seguem o seu regime. A LéIA emite com os dados que você e o seu contador definiram; apuração e pagamento de impostos continuam com o seu contador.</p>
