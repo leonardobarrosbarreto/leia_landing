@@ -322,15 +322,14 @@ footer{border-top:1px solid var(--line);padding-block:64px 40px;background:#0A0C
 .thread .badge b{white-space:normal}
 @media (max-width:1023px){
  .hero{min-height:0}
- .hero .hero-grid{--spare:max(0px,calc(100vh - 743px));--spare:max(0px,calc(100svh - 743px));--sp1:min(48px,calc(var(--spare)/2));display:flex;flex-direction:column;min-height:0;padding-top:96px;padding-bottom:16px;gap:0}
+ .hero .hero-grid{--spare:max(0px,calc(100vh - 795px));--spare:max(0px,calc(100svh - 795px));--sp1:min(48px,calc(var(--spare)/2));display:flex;flex-direction:column;min-height:0;padding-top:96px;padding-bottom:16px;gap:0}
  .hero .copy{display:contents}
  .hero .pill{order:1;align-self:flex-start}
- .hero .pill{display:none}
  .hdr .btn-main{transition:opacity .25s ease,transform .25s ease}
  .hdr:not(.scrolled) .btn-main{opacity:0;transform:translateY(-6px);pointer-events:none}
- .hero h1{order:2;font-size:34px;line-height:1.08;margin:0;margin-top:var(--sp1);max-width:none;letter-spacing:-.01em}
+ .hero h1{order:2;font-size:34px;line-height:1.08;margin:0;margin-top:calc(16px + var(--sp1));max-width:none;letter-spacing:-.01em}
  .hero .sub{order:6;font-size:var(--fs-16);max-width:none;margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,.16)}
- .hero .vis{order:3;display:block;position:relative;flex:none;height:calc(100vh - 323px - 2*var(--sp1));height:calc(100svh - 323px - 2*var(--sp1));min-height:340px;margin:calc(4px + var(--sp1)) -16px 0;max-width:none;width:auto}
+ .hero .vis{order:3;display:block;position:relative;flex:none;height:calc(100vh - 375px - 2*var(--sp1));height:calc(100svh - 375px - 2*var(--sp1));min-height:320px;margin:calc(4px + var(--sp1)) -16px 0;max-width:none;width:auto}
  .hero .photo{position:absolute;right:-10%;bottom:0;height:100%;width:auto;margin:0;max-width:none;z-index:1;-webkit-mask-image:linear-gradient(to bottom,#000 84%,transparent 100%);mask-image:linear-gradient(to bottom,#000 84%,transparent 100%)}
  .hero .thread{position:absolute;left:16px;top:16px;bottom:16px;width:min(66%,256px);padding:0;gap:8px;z-index:3;justify-content:flex-end}
  .hero .thread .b-tempo{display:flex;position:static;margin:0 0 auto 0}
@@ -343,7 +342,7 @@ footer{border-top:1px solid var(--line);padding-block:64px 40px;background:#0A0C
  .hero .trust{order:7;margin-top:20px;padding-top:0;border-top:0}
  @keyframes lpop{to{opacity:1;transform:none}}
 }
-@media (max-width:360px){.hero h1{font-size:31px}.hero .hero-grid{--spare:max(0px,calc(100vh - 770px));--spare:max(0px,calc(100svh - 770px))}.hero .vis{height:calc(100vh - 350px - 2*var(--sp1));height:calc(100svh - 350px - 2*var(--sp1))}}
+@media (max-width:360px){.hero h1{font-size:31px}.hero .hero-grid{--spare:max(0px,calc(100vh - 802px));--spare:max(0px,calc(100svh - 802px))}.hero .vis{height:calc(100vh - 382px - 2*var(--sp1));height:calc(100svh - 382px - 2*var(--sp1))}}
 @media (prefers-reduced-motion:reduce){.hero .thread .bub.out,.hero .thread .bub.in{opacity:1;transform:none;animation:none}}
 </style>
 </head>
@@ -367,7 +366,7 @@ footer{border-top:1px solid var(--line);padding-block:64px 40px;background:#0A0C
   <section class="hero" aria-labelledby="h1">
     <div class="wrap hero-grid">
       <div class="copy">
-        <span class="pill"><i></i>Teste grátis por 30 dias</span>
+        <span class="pill"><i></i>Oferta especial de lançamento</span>
         <h1 id="h1">Mande uma mensagem.<br>A LéIA emite a&nbsp;nota.</h1>
         <p class="sub">Por texto ou áudio, no WhatsApp. A nota sai no Emissor Nacional, fica guardada e o paciente (ou quem paga) recebe por e‑mail.</p>
         <div class="acts">
